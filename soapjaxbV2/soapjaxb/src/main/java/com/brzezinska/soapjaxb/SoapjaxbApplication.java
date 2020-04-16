@@ -19,6 +19,8 @@ public class SoapjaxbApplication {
             }
             RegisterCallResponse response = studentClient.getRegisterCall(studentName);
             System.err.println(response.getExercise().getName());
+            ResultsResponse responseRes = studentClient.getResults(studentName);
+            System.err.println(responseRes.getEntry());
         };
     }
 
