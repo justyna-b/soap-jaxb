@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="71d0dcaa-83d2-4392-8911-27d0b39f2efb" activeEnvironment="Default" name="api" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="1357b31e-b7e6-4035-b2a4-ce02f55d71b5" wsaVersion="NONE" name="ApiPortSoap11" type="wsdl" bindingName="{http://amw.gdynia.pl/sao/lab1}ApiPortSoap11" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/tysia/Desktop/api.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\tysia\Desktop\api.wsdl"><con:part><con:url>file:\C:\Users\tysia\Desktop\api.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://amw.gdynia.pl/sao/lab1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://amw.gdynia.pl/sao/lab1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://amw.gdynia.pl/sao/lab1">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://amw.gdynia.pl/sao/lab1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="registerCallRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="student" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="registerCallResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="exercise" type="tns:exercise"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="exercise">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="note" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="resultsRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="student" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="resultsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="entry" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="resultsResponse">
+    <wsdl:part element="tns:resultsResponse" name="resultsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="registerCallResponse">
+    <wsdl:part element="tns:registerCallResponse" name="registerCallResponse"/>
+  </wsdl:message>
+  <wsdl:message name="registerCallRequest">
+    <wsdl:part element="tns:registerCallRequest" name="registerCallRequest"/>
+  </wsdl:message>
+  <wsdl:message name="resultsRequest">
+    <wsdl:part element="tns:resultsRequest" name="resultsRequest"/>
+  </wsdl:message>
+  <wsdl:portType name="ApiPort">
+    <wsdl:operation name="results">
+      <wsdl:input message="tns:resultsRequest" name="resultsRequest"/>
+      <wsdl:output message="tns:resultsResponse" name="resultsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="registerCall">
+      <wsdl:input message="tns:registerCallRequest" name="registerCallRequest"/>
+      <wsdl:output message="tns:registerCallResponse" name="registerCallResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ApiPortSoap11" type="tns:ApiPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="results">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="resultsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="resultsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerCall">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="registerCallRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerCallResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ApiPortService">
+    <wsdl:port binding="tns:ApiPortSoap11" name="ApiPortSoap11">
+      <soap:address location="https://blooming-waters-10524.herokuapp.com:443/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://DESKTOP-U1PEUS1:8088/mockApiPortSoap11</con:endpoint><con:endpoint>https://blooming-waters-10524.herokuapp.com:443/ws</con:endpoint></con:endpoints><con:operation id="19e752f5-d47d-4a24-897b-2f3f183395e8" isOneWay="false" action="" name="registerCall" bindingOperationName="registerCall" type="Request-Response" outputName="registerCallResponse" inputName="registerCallRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3e56174b-acc4-4204-ac3b-ecbc4996c922" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://DESKTOP-U1PEUS1:8088/mockApiPortSoap11</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lab1="http://amw.gdynia.pl/sao/lab1">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <lab1:registerCallRequest>\r
+         <lab1:student>?</lab1:student>\r
+      </lab1:registerCallRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://amw.gdynia.pl/sao/lab1/ApiPort/registerCallRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5c4ed2ef-3333-49c9-bca3-d984f729be54" isOneWay="false" action="" name="results" bindingOperationName="results" type="Request-Response" outputName="resultsResponse" inputName="resultsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="93bbd098-dbae-4ec3-928c-92263d8c443f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://blooming-waters-10524.herokuapp.com:443/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lab1="http://amw.gdynia.pl/sao/lab1">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <lab1:resultsRequest>\r
+         <lab1:student>?</lab1:student>\r
+      </lab1:resultsRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://amw.gdynia.pl/sao/lab1/ApiPort/resultsRequest"/></con:call></con:operation></con:interface><con:mockService id="ee2993dc-612a-4c5b-a6ab-15c6c74048d6" port="8088" path="/mockApiPortSoap11" host="DESKTOP-U1PEUS1" name="ApiPortSoap11 MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="registerCall" id="2b596e83-b4f2-4f45-95ae-858672a66613" interface="ApiPortSoap11" operation="registerCall"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="5730f849-2c58-426f-9612-d14098465bcd" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lab1="http://amw.gdynia.pl/sao/lab1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lab1:registerCallResponse>
+         <lab1:exercise>
+            <lab1:name>xxx</lab1:name>
+            <lab1:note>xxx</lab1:note>
+         </lab1:exercise>
+      </lab1:registerCallResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://amw.gdynia.pl/sao/lab1/ApiPort/registerCallResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="results" id="cec059c6-ca29-42f9-bd4d-fad7b4186be8" interface="ApiPortSoap11" operation="results"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="db6a589d-9910-4a7b-99bf-e9076f35a75a" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lab1="http://amw.gdynia.pl/sao/lab1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <lab1:resultsResponse>
+         <!--1 or more repetitions:-->
+         <lab1:entry>?</lab1:entry>
+      </lab1:resultsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://amw.gdynia.pl/sao/lab1/ApiPort/resultsResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
